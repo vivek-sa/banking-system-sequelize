@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "pgsql",
+    "password": "12345678",
+    "database": "banking_system_db_seq",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "pgsql",
+    "password": "12345678",
+    "database": "banking_system_db_seq",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "pgsql",
+    "password": "12345678",
+    "database": "banking_system_db_seq",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
