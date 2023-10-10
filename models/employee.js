@@ -27,7 +27,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
+      paranoid: true,
+      deletedAt: "deleted_at",
       modelName: "Employee",
+      tableName: "Employees",
     }
   );
   return Employee;

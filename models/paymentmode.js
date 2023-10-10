@@ -19,7 +19,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
+      paranoid: true,
+      deletedAt: "deleted_at",
       modelName: "PaymentMode",
+      tableName: "PaymentModes",
     }
   );
   return PaymentMode;
