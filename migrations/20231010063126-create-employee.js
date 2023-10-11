@@ -10,6 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       address_id: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: "Addresses",
@@ -19,6 +20,7 @@ module.exports = {
         onDelete: "CASCADE",
       },
       branch_id: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: "Branches",
@@ -39,6 +41,9 @@ module.exports = {
         allowNull: false,
         unique: true,
         type: Sequelize.STRING,
+        validate: {
+          isEmail: true,
+        },
       },
       phone_no: {
         allowNull: false,

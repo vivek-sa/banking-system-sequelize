@@ -10,15 +10,19 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       street_address: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       city: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       state: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       zip_code: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       createdAt: {

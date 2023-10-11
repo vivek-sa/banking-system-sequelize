@@ -13,13 +13,21 @@ module.exports = (sequelize, DataTypes) => {
   }
   CustomerAddress.init(
     {
-      customer_id: DataTypes.INTEGER,
-      address_id: DataTypes.INTEGER,
+      customer_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
+      address_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
     },
     {
       sequelize,
       paranoid: true,
       deletedAt: "deleted_at",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
       modelName: "CustomerAddress",
       tableName: "CustomerAddresses",
     }

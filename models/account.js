@@ -21,17 +21,38 @@ module.exports = (sequelize, DataTypes) => {
   }
   Account.init(
     {
-      customer_id: DataTypes.INTEGER,
-      branch_id: DataTypes.INTEGER,
-      account_type: DataTypes.ENUM,
-      account_number: DataTypes.STRING,
-      open_date: DataTypes.DATE,
-      balance: DataTypes.DECIMAL,
+      customer_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
+      branch_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
+      account_type: {
+        allowNull: false,
+        type: DataTypes.ENUM("Savings", "Current", "Salary"),
+      },
+      account_number: {
+        allowNull: false,
+        unique: true,
+        type: DataTypes.STRING,
+      },
+      open_date: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      balance: {
+        defaultValue: 0.0,
+        type: DataTypes.DECIMAL,
+      },
     },
     {
       sequelize,
       paranoid: true,
       deletedAt: "deleted_at",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
       modelName: "Account",
       tableName: "Accounts",
     }

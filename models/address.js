@@ -19,15 +19,29 @@ module.exports = (sequelize, DataTypes) => {
   }
   Address.init(
     {
-      street_address: DataTypes.STRING,
-      city: DataTypes.STRING,
-      state: DataTypes.STRING,
-      zip_code: DataTypes.STRING,
+      street_address: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      city: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      state: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      zip_code: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
     },
     {
       sequelize,
       paranoid: true,
       deletedAt: "deleted_at",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
       modelName: "Address",
       tableName: "Addresses",
     }
