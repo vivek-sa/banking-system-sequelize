@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       account_type: {
         allowNull: false,
         type: DataTypes.ENUM("Savings", "Current", "Salary"),
+        defaultValue: "Savings",
       },
       account_number: {
         allowNull: false,

@@ -54,6 +54,7 @@ module.exports = (sequelize, DataTypes) => {
       position: {
         allowNull: false,
         type: DataTypes.ENUM("Manager", "Employee"),
+        defaultValue: "Employee",
       },
     },
     {
