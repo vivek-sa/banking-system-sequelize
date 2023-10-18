@@ -11,6 +11,7 @@ module.exports = {
       },
       customer_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: "Customers",
           key: "id",
@@ -20,6 +21,7 @@ module.exports = {
       },
       branch_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: "Branches",
           key: "id",

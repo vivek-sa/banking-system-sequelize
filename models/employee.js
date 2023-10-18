@@ -15,19 +15,56 @@ module.exports = (sequelize, DataTypes) => {
   }
   Employee.init(
     {
-      address_id: DataTypes.INTEGER,
-      branch_id: DataTypes.INTEGER,
-      first_name: DataTypes.STRING,
-      last_name: DataTypes.STRING,
-      email: DataTypes.STRING,
-      phone_no: DataTypes.STRING,
-      date_of_birth: DataTypes.DATE,
-      gender: DataTypes.STRING,
-      position: DataTypes.ENUM("Manager", "Employee"),
+      address_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
+      branch_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
+      first_name: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      last_name: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      email: {
+        allowNull: false,
+        unique: true,
+        type: DataTypes.STRING,
+        validate: {
+          isEmail: true,
+        },
+      },
+      phone_no: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      date_of_birth: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      gender: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      position: {
+        allowNull: false,
+        type: DataTypes.ENUM("Manager", "Employee"),
+        defaultValue: "Employee",
+      },
     },
     {
       sequelize,
+      paranoid: true,
+      deletedAt: "deleted_at",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
       modelName: "Employee",
+      tableName: "Employees",
     }
   );
   return Employee;

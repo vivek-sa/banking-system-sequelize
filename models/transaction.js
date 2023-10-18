@@ -18,15 +18,35 @@ module.exports = (sequelize, DataTypes) => {
   }
   Transaction.init(
     {
-      account_id: DataTypes.INTEGER,
-      payment_mode_id: DataTypes.INTEGER,
-      transaction_date: DataTypes.DATE,
-      transaction_type: DataTypes.STRING,
-      amount: DataTypes.DECIMAL,
+      account_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
+      payment_mode_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
+      transaction_date: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
+      transaction_type: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      amount: {
+        type: DataTypes.DECIMAL,
+        allowNull: false,
+      },
     },
     {
       sequelize,
+      paranoid: true,
+      deletedAt: "deleted_at",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
       modelName: "Transaction",
+      tableName: "Transactions",
     }
   );
   return Transaction;

@@ -11,6 +11,7 @@ module.exports = {
       },
       account_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: "Accounts",
           key: "id",
@@ -20,6 +21,7 @@ module.exports = {
       },
       payment_mode_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: "PaymentModes",
           key: "id",
@@ -29,12 +31,15 @@ module.exports = {
       },
       transaction_date: {
         type: Sequelize.DATE,
+        allowNull: false,
       },
       transaction_type: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       amount: {
         type: Sequelize.DECIMAL,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

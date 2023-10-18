@@ -21,6 +21,9 @@ module.exports = {
         allowNull: false,
         unique: true,
         type: Sequelize.STRING,
+        validate: {
+          isEmail: true,
+        },
       },
       phone_no: {
         allowNull: false,

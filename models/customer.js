@@ -20,18 +20,49 @@ module.exports = (sequelize, DataTypes) => {
   }
   Customer.init(
     {
-      first_name: DataTypes.STRING,
-      last_name: DataTypes.STRING,
-      email: DataTypes.STRING,
-      phone_no: DataTypes.STRING,
-      date_of_birth: DataTypes.DATE,
-      gender: DataTypes.STRING,
-      occupation: DataTypes.STRING,
-      date_joined: DataTypes.DATE,
+      first_name: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      last_name: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      email: {
+        allowNull: false,
+        unique: true,
+        type: DataTypes.STRING,
+        validate: {
+          isEmail: true,
+        },
+      },
+      phone_no: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      date_of_birth: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      gender: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      occupation: {
+        type: DataTypes.STRING,
+      },
+      date_joined: {
+        type: DataTypes.DATE,
+      },
     },
     {
       sequelize,
+      paranoid: true,
+      deletedAt: "deleted_at",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
       modelName: "Customer",
+      tableName: "Customers",
     }
   );
   return Customer;

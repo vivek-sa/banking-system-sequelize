@@ -15,13 +15,28 @@ module.exports = (sequelize, DataTypes) => {
   }
   Branch.init(
     {
-      branch_name: DataTypes.STRING,
-      location: DataTypes.STRING,
-      ifsc_code: DataTypes.STRING,
+      branch_name: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      location: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      ifsc_code: {
+        allowNull: false,
+        unique: true,
+        type: DataTypes.STRING,
+      },
     },
     {
       sequelize,
+      paranoid: true,
+      deletedAt: "deleted_at",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
       modelName: "Branch",
+      tableName: "Branches",
     }
   );
   return Branch;

@@ -15,11 +15,19 @@ module.exports = (sequelize, DataTypes) => {
   }
   PaymentMode.init(
     {
-      mode_name: DataTypes.STRING,
+      mode_name: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
     },
     {
       sequelize,
+      paranoid: true,
+      deletedAt: "deleted_at",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
       modelName: "PaymentMode",
+      tableName: "PaymentModes",
     }
   );
   return PaymentMode;
